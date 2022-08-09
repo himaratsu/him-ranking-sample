@@ -28,6 +28,13 @@
   flex-grow: 1;
 }
 
+.notice {
+  padding: 8px 0;
+  background-color: #0070f3;
+  font-weight: bold;
+  text-align: center;
+}
+
 .title a {
   color: #0070f3;
   text-decoration: none;
