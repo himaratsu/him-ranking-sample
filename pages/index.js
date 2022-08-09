@@ -47,17 +47,26 @@ export default function Home({ contents }) {
 
 export const getStaticProps = async (context) => {
   const draftKey = context.previewData?.draftKey;
-  console.log(draftKey);
 
-  const contents = await apiClient.getList({
-    endpoint: "games",
+  // そのままゲーム情報を利用
+  // const result = await apiClient.getList({
+  //   endpoint: "games",
+  //   draftKey: draftKey,
+  // });
+  // const contents = result.contents;
+  // console.log(contents);
+
+  // 「ランキングAPI」で束ねて利用
+  const result = await apiClient.getObject({
+    endpoint: "ranking",
     draftKey: draftKey,
   });
+  const contents = result.games;
   console.log(contents);
 
   return {
     props: {
-      contents: contents.contents,
+      contents: contents,
     },
   };
 };
